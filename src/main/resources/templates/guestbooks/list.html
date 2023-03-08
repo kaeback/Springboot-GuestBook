@@ -16,12 +16,19 @@
         <input type="button" onclick="location.href='/members/join'" value="회원가입">
         <input type="button" onclick="location.href='/members/login'" value="로그인">
     </div>
-    <th:block th:each="guestbook : ${guestbooks}">
-        <fieldset>
-            <legend>작성자: [[${guestbook.name}]]</legend>
-            [[guestbook.contents]]
-        </fieldset>
-    </th:block>
+    <p>
+    <table>
+		<tr>
+			<th>No</th>
+			<th>내용</th>
+			<th>등록일</th>
+		</tr>
+		<tr th:each="guestbook : ${guestbooks}">
+			<td class="center" th:text="${guestbookStat.count}"></td>
+			<td><a th:href="@{/guestbooks/update/{guestbook_id}(guestbook_id=${guestbook.guestbook_id})}" th:text="${guestbook.contents}"></a></td>
+			<td class="center" th:text="${#temporals.format(guestbook.created_time, 'yyyy-MM-dd hh:mm:ss')}"></td>
+		</tr>
+	</table>
 </div>
 </body>
 </html>

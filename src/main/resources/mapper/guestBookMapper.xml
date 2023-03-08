@@ -20,7 +20,7 @@
     </insert>
 
     <!--  등록된 방명록 전체 목록  -->
-    <select id="findAllGuestBook" resultType="guestBook">
+    <select id="findAllGuestBooks" resultType="guestBook">
         select * from guestbook
     </select>
 
@@ -34,10 +34,8 @@
         update guestbook
         <set>
             <if test="contents != null">
-                contents = #{contents},
-                lastModified_time = sysdate,
+                contents = #{contents}
             </if>
-            <if test="hit != null">hit = #{hit},</if>
         </set>
         where guestbook_id = #{guestbook_id}
     </update>
