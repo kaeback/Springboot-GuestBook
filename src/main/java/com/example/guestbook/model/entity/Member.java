@@ -1,4 +1,4 @@
-package com.example.guestbook.model;
+package com.example.guestbook.model.entity;
 
 import lombok.Data;
 
@@ -6,6 +6,6 @@ import lombok.Data;
 public class Member {
     private String member_id;
     private String password;
-    private String username;
+    private String name;
 
 }

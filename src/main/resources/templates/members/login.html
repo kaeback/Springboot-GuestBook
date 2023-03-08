@@ -1,10 +1,40 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+    <link rel="stylesheet" href="/css/default.css">
 </head>
 <body>
-$END$
+<div id="container">
+    <h1>로그인</h1>
+    <form action="/members/login" method="post" th:object="${loginDto}">
+        <div th:if="${#fields.hasGlobalErrors()}">
+            <p class="error" th:each="error : ${#fields.globalErrors()}" th:text="${error}"></p>
+        </div>
+        <table>
+            <tr>
+                <th>아이디</th>
+                <td>
+                    <input type="text" th:field="*{id}">
+                    <div class="error" th:errors="*{id}"></div>
+                </td>
+            </tr>
+            <tr>
+                <th>패스워드</th>
+                <td>
+                    <input type="password" th:field="*{password}">
+                    <div class="error" th:errors="*{password}"></div>
+                </td>
+            </tr>
+        </table>
+        <p>
+        <div class="center">
+            <input type="button" onclick="location.href='/'" value="메인으로">
+            <input type="submit" value="로그인">
+            <input type="reset" value="취소">
+        </div>
+    </form>
+</div>
 </body>
 </html>
