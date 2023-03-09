@@ -7,7 +7,7 @@
 </head>
 <body>
 <div id="container">
-    <h1>방명록 수정</h1>
+    <h1>방명록 수정/삭제</h1>
     <form th:action="@{/guestbooks/update/{guestbook_id}(guestbook_id=${guestBook.guestbook_id})}" method="post">
         <table>
             <tr>
@@ -24,9 +24,11 @@
         <p>
         <div class="center">
             <input type="button" onclick="location.href='/'" value="메인으로">
-            <input type="submit" value="수정하기">
-            <input type="button" th:onclick="|location.href='@{/guestbooks/remove(guestbook_id=${guestBook.guestbook_id})}'|" value="삭제하기">
-            <input type="reset" value="취소">
+           	<th:block th:if="${session.loginMember.member_id} == ${guestBook.member_id}">
+	            <input type="submit" value="수정하기">
+	            <input type="button" th:onclick="|location.href='@{/guestbooks/remove(guestbook_id=${guestBook.guestbook_id})}'|" value="삭제하기">
+	            <input type="reset" value="취소">
+            </th:block>
         </div>
     </form>
 </div>

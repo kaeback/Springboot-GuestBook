@@ -17,6 +17,7 @@ public class WebConfig implements WebMvcConfigurer {
                 "/members/join",
                 "/members/login",
                 "/members/logout",
+                "/guestbooks/list",
                 "/error",
                 "/css/**",
                 "/js/**",
